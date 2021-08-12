@@ -105,7 +105,6 @@ const Shoes = styled(motion.div)`
 `;
 
 
-
 export default function NikeCard(props) {
 
   const x = useMotionValue(0);
@@ -126,8 +125,14 @@ export default function NikeCard(props) {
               <Circle/>
             </CircleWrapper>
             <ShoesWrapper>
-              <Shoes style={{rotate:"-25deg"}}>
-                  <img src={AirJordan} alt="" />
+              <Shoes 
+                  style={{x,y,rotateX,rotateY, rotate:"-25deg",z:10000}}
+                  drag
+                  dragElastic={0.12}
+                  whileTap={{cursor:"grabbing"}}
+                  >
+                  <img src={AirJordan} alt="" 
+                  />
               </Shoes>
             </ShoesWrapper>
             <NIkeText>NIKE AIR</NIkeText>
