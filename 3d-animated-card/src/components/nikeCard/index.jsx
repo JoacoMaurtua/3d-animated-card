@@ -1,11 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 import AirJordan from '../../images/air-jordan-transparent.png'
-import {motion} from 'framer-motion';
+import {motion, useMotionValue, useTransform} from 'framer-motion';
 import ShoesDetails from './ShoesDetails';
 
 
-const CardContainer = styled.div`
+const CardWrapper = styled.div`
+  width: 100%;
+  perspective: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+`;
+
+
+
+
+const CardContainer = styled(motion.div)`
   width: 285px;
   height: 500px;
   display: flex;
@@ -95,22 +107,35 @@ const Shoes = styled(motion.div)`
 
 
 export default function NikeCard(props) {
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useTransform(y, [-100,100], [30,-30]);
+  const rotateY = useTransform(x, [-100,100], [-30,30]);
+
   return (
-    <CardContainer>
-      <TopContainer>
-        <CircleWrapper>
-          <Circle/>
-        </CircleWrapper>
-        <ShoesWrapper>
-          <Shoes style={{rotate:"-25deg"}}>
-              <img src={AirJordan} alt="" />
-          </Shoes>
-        </ShoesWrapper>
-        <NIkeText>NIKE AIR</NIkeText>
-      </TopContainer>
-      <BottomContainer>
-        <ShoesDetails />
-      </BottomContainer>
-    </CardContainer>
+    <CardWrapper>
+        <CardContainer 
+          style={{x,y,rotateX,rotateY,z:100}}
+          drag dragElastic={0.20}
+          drag dragConstraints={{top:0,left:0,right:0,bottom:0}}
+          whileTap={{cursor: "grabbing"}}
+          >
+          <TopContainer>
+            <CircleWrapper>
+              <Circle/>
+            </CircleWrapper>
+            <ShoesWrapper>
+              <Shoes style={{rotate:"-25deg"}}>
+                  <img src={AirJordan} alt="" />
+              </Shoes>
+            </ShoesWrapper>
+            <NIkeText>NIKE AIR</NIkeText>
+          </TopContainer>
+          <BottomContainer>
+            <ShoesDetails />
+          </BottomContainer>
+        </CardContainer>
+    </CardWrapper>
   )
 }
