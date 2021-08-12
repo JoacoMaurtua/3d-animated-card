@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import {Marginer} from './marginer/index';
+
+
 
 const DetailsContainer = styled.div`
   width: 100%;
@@ -41,10 +44,14 @@ const SpacedHorizContainer = styled.div`
 export default function shoesDetails(props) {
   return (
     <DetailsContainer>
-      <SmallText>NIKE AIR</SmallText>
+      <SmallText>NIKE</SmallText>
       <SpacedHorizContainer>
         <MediumText>AIR JORDAN 1 MID SE GC</MediumText>
         <MediumText>$185</MediumText>
+      </SpacedHorizContainer>
+      <Marginer direction="vertical" margin="1.2em"/>
+      <SpacedHorizContainer>
+        <MediumText>They will be yours</MediumText>
       </SpacedHorizContainer>
       
     </DetailsContainer>

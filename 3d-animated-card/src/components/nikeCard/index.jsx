@@ -94,8 +94,6 @@ const Shoes = styled(motion.div)`
 
 
 
-
-
 export default function NikeCard(props) {
   return (
     <CardContainer>
