@@ -1,5 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import AirJordan from '../../images/air-jordan-transparent.png'
+import {motion} from 'framer-motion';
+import ShoesDetails from './ShoesDetails';
+
 
 const CardContainer = styled.div`
   width: 285px;
@@ -36,14 +40,79 @@ const Circle = styled.div`
   border-radius: 50%;
 `;
 
+const TopContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1.2;
+  position: relative;
+  align-items: center;
+  justify-content: flex-end;
+  /* padding: 1em 15px; */ 
+`;
+
+const BottomContainer = styled.div`
+  display: flex;
+  flex: 0.8;
+  padding: 0 1em;
+`;
+
+const NIkeText = styled.h1`
+  color: white;
+  text-transform: uppercase;
+  margin: 0;
+  z-index: 10;
+  font-size: 76px;
+  font-weight: 900;
+`;
+
+const ShoesWrapper = styled(motion.div)`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+`;
+
+const Shoes = styled(motion.div)`
+  width: auto;
+  height: 190px;
+  z-index: 99;
+  user-select: none;
+  margin-right: 3em;
+  margin-top: 3em;
+
+
+  img{
+    width: auto;
+    height: 100%;
+    user-select: none;
+  }
+`;
+
+
+
 
 
 export default function NikeCard(props) {
   return (
     <CardContainer>
-      <CircleWrapper>
-        <Circle/>
-      </CircleWrapper>
+      <TopContainer>
+        <CircleWrapper>
+          <Circle/>
+        </CircleWrapper>
+        <ShoesWrapper>
+          <Shoes style={{rotate:"-25deg"}}>
+              <img src={AirJordan} alt="" />
+          </Shoes>
+        </ShoesWrapper>
+        <NIkeText>NIKE AIR</NIkeText>
+      </TopContainer>
+      <BottomContainer>
+        <ShoesDetails />
+      </BottomContainer>
     </CardContainer>
   )
 }

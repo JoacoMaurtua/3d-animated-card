@@ -9,7 +9,6 @@ const AppContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 10rem;
 `;
 
 function App() {
